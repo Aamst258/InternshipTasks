@@ -1,16 +1,12 @@
-const express  =  require('express') ;
-// const {home , register} =  require("../controllers/authController")
+const express = require("express");
 const authController = require("../controllers/authController");
-const router  =  express.Router();
+const router = express.Router();
 
-// router.get("/",(req,res) =>{
-//     res.status(200).send("Welcome to Home page");
-// })   
-
-router.route("/").get(authController.home)  
-
-// register
+router.route("/").get(authController.home);
 router.route("/register").post(authController.register);
- 
+router.route("/delete/:email").delete(authController.deleteUser);
+router.route("/update/:email").put(authController.updateUser);
+router.route("/user/:email").get(authController.getUserByEmail);
+router.route("/users").get(authController.getAllUsers);
 
-module.exports = router
+module.exports = router;
